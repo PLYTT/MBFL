@@ -63,21 +63,13 @@
             margin-top: 50px;
         }
 
-        /* Video styling */
-        video {
-            max-width: 100%;
-            max-height: 100%;
-            border: 3px solid #990000;
-            border-radius: 10px;
-        }
-
-  .video-container iframe {
-            max-width: 100%;
+        /* YouTube iframe styling - wider width */
+        .video-container iframe {
+            max-width: 100%; /* Increase width to 90% of container */
             height: 70vh;
             border: 3px solid #990000;
             border-radius: 10px;
         }
-
     </style>
 </head>
 <body>
@@ -89,14 +81,14 @@
         <a href="https://dexter.fandom.com/wiki/Home" target="_blank">Dexter</a>
     </nav>
 
-    <!-- Video container -->
+    <!-- YouTube video embed -->
     <div class="video-container">
         <iframe src="https://www.youtube.com/embed/xZ2dZWu2euc" 
                 title="Dexter Recap" 
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen>
-        </video>
+        </iframe>
     </div>
 </body>
 </html>

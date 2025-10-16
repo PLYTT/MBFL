@@ -3,92 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Of Kill</title>
+    <title>MBFL - Pound-for-Pound Rankings</title>
     <style>
-        /* Reset margin and padding */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        /* Body and background styling */
+        
         body {
-            background-color: #2c0202; /* Dark crimson background */
-            color: #fff;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #c00 0%, #900 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .rankings-section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             overflow: hidden;
         }
-
-        /* Navigation bar styling */
-        nav {
+        
+        .section-title {
+            background-color: #222;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+        
+        .rankings-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .ranking-item {
             display: flex;
-            justify-content: center;
-            width: 100%;
-            padding: 10px;
-            background-color: #550000; /* Darker crimson for nav bar */
-            position: fixed;
-            top: 0;
-        }
-
-        /* Link styling */
-        nav a {
-            color: #ff4d4d; /* Light crimson for links */
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 15px;
-            padding: 10px 15px;
-            transition: color 0.3s;
-            border-radius: 5px;
-        }
-
-        /* Hover effect for links */
-        nav a:hover {
-            color: #fff;
-            background-color: #990000;
-        }
-
-        /* Video container styling */
-        .video-container {
-            display: flex;
-            justify-content: center;
             align-items: center;
-            height: 80vh;
-            width: 100%;
-            margin-top: 50px;
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
         }
-
-        /* YouTube iframe styling - wider width */
-        .video-container iframe {
-            max-width: 90%; /* Increase width to 90% of container */
-            height: 70vh;
-            border: 3px solid #990000;
-            border-radius: 10px;
+        
+        .ranking-item:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .ranking-item:last-child {
+            border-bottom: none;
+        }
+        
+        .rank-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            width: 60px;
+            text-align: center;
+        }
+        
+        .rank-1 .rank-number {
+            color: #c00;
+        }
+        
+        .rank-2 .rank-number {
+            color: #900;
+        }
+        
+        .fighter-info {
+            flex: 1;
+        }
+        
+        .fighter-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .fighter-details {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .champion-badge {
+            display: inline-block;
+            background-color: #c00;
+            color: white;
+            font-size: 0.8rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+        }
+        
+        .vacant {
+            color: #999;
+            font-style: italic;
+        }
+        
+        .link-button {
+            display: block;
+            width: 250px;
+            margin: 2rem auto;
+            padding: 0.8rem 1.5rem;
+            background-color: #c00;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .link-button:hover {
+            background-color: #900;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .ranking-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .rank-number {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation bar -->
-    <nav>
-        <a href="https://x.com/themichealhall" target="_blank">Twitter</a>
-        <a href="https://www.youtube.com/watch?v=i8xNo3P-cjM" target="_blank">YouTube</a>
-        <a href="https://www.patreon.com/c/CiscoIfAddicted" target="_blank">Patreon</a>
-        <a href="https://dexter.fandom.com/wiki/Home" target="_blank">Dexter</a>
-    </nav>
-
-    <!-- YouTube video embed -->
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/4kr-nlXvEqE?autoplay=1&mute=0" 
-                title="Dexter Recap" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-        </iframe>
+    <header>
+        <div class="logo">MBFL</div>
+        <div class="subtitle">Moroccan Backyard Fighting League</div>
+    </header>
+    
+    <div class="container">
+        <section class="rankings-section">
+            <div class="section-title">Pound-for-Pound Rankings</div>
+            <ul class="rankings-list">
+                <li class="ranking-item rank-1">
+                    <div class="rank-number">1</div>
+                    <div class="fighter-info">
+                        <div class="fighter-name">
+                            Naha Youssef
+                            <span class="champion-badge">Interim Lightweight Champion</span>
+                        </div>
+                        <div class="fighter-details">Record: 2-0</div>
+                    </div>
+                </li>
+                <li class="ranking-item rank-2">
+                    <div class="rank-number">2</div>
+                    <div class="fighter-info">
+                        <div class="fighter-name">Nassim Yakouti</div>
+                        <div class="fighter-details">Record information pending</div>
+                    </div>
+                </li>
+                <li class="ranking-item">
+                    <div class="rank-number">3</div>
+                    <div class="fighter-info">
+                        <div class="fighter-name vacant">Vacant</div>
+                        <div class="fighter-details">Position awaiting future updates</div>
+                    </div>
+                </li>
+                <li class="ranking-item">
+                    <div class="rank-number">4</div>
+                    <div class="fighter-info">
+                        <div class="fighter-name vacant">Vacant</div>
+                        <div class="fighter-details">Position awaiting future updates</div>
+                    </div>
+                </li>
+                <li class="ranking-item">
+                    <div class="rank-number">5</div>
+                    <div class="fighter-info">
+                        <div class="fighter-name vacant">Vacant</div>
+                        <div class="fighter-details">Position awaiting future updates</div>
+                    </div>
+                </li>
+                <li class="ranking-item">
+                    <div class="rank-number">6</div>
+                    <div class="fighter-info">
+                        <div class="fighter-name vacant">Vacant</div>
+                        <div class="fighter-details">Position awaiting future updates</div>
+                    </div>
+                </li>
+                <li class="ranking-item">
+                    <div class="rank-number">7</div>
+                    <div class="fighter-info">
+                        <div class="fighter-name vacant">Vacant</div>
+                        <div class="fighter-details">Position awaiting future updates</div>
+                    </div>
+                </li>
+                <li class="ranking-item">
+                    <div class="rank-number">8</div>
+                    <div class="fighter-info">
+                        <div class="fighter-name vacant">Vacant</div>
+                        <div class="fighter-details">Position awaiting future updates</div>
+                    </div>
+                </li>
+                <li class="ranking-item">
+                    <div class="rank-number">9</div>
+                    <div class="fighter-info">
+                        <div class="fighter-name vacant">Vacant</div>
+                        <div class="fighter-details">Position awaiting future updates</div>
+                    </div>
+                </li>
+                <li class="ranking-item">
+                    <div class="rank-number">10</div>
+                    <div class="fighter-info">
+                        <div class="fighter-name vacant">Vacant</div>
+                        <div class="fighter-details">Position awaiting future updates</div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        
+        <a href="https://linktr.ee/MBFLCHAMPIONSHIP" class="link-button" target="_blank">Follow MBFL Championship</a>
     </div>
+    
+    <footer>
+        <p>MBFL - Moroccan Backyard Fighting League</p>
+        <p>Official Pound-for-Pound Rankings</p>
+    </footer>
 </body>
 </html>
